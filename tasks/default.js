@@ -29,10 +29,3 @@ gulp.task('html',['comold','public','special'],function(){
 gulp.task('prod',function(cb){
     gulpSequence('clean','rev')(cb);
 });
-
-//reduce
-gulp.task('a',['revimg'],function(cb){
-    setTimeout(function(){
-        gulpSequence('revCssimg')(cb);
-    },1000);
-});

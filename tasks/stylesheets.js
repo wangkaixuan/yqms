@@ -34,7 +34,21 @@ gulp.task('revCss',function(){
 });
 //css update images
 gulp.task('revCssimg',function(){
-    gulp.src(['generating/rev/**/*.json','css/**/*.css'])
+    console.log('\n\n\ninput command with params, for example: \n\nrevCssimg\n\n\n');
+    var csssrc = ['generating/rev/**/*.json','css/**/*.css'];
+    csssrc.push('!css/**/browse.css');
+    csssrc.push('!css/**/browsezTree.css');
+    csssrc.push('!css/**/customer.css');
+    csssrc.push('!css/**/gambit.css');
+    csssrc.push('!css/**/headFoot.css');
+    csssrc.push('!css/**/index.css');
+    csssrc.push('!css/**/monitoring.css');
+    csssrc.push('!css/**/myconcern.css');
+    csssrc.push('!css/**/newhelp.css');
+    csssrc.push('!css/**/stylesheets.css');
+    csssrc.push('!css/**/set.css');
+    csssrc.push('!css/**/system.css');
+    gulp.src(csssrc)
         .pipe(revCollector({
             replaceReved:true
         }))

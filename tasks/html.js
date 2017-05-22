@@ -1,11 +1,13 @@
 var gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin'),
+    rev = require('gulp-rev-append'),
     revCollector = require('gulp-rev-collector');
 gulp.task('comold',function(){
     return gulp.src(['generating/rev/**/*.json','../Home/Tpl/comold/**/*.html'])
         .pipe(revCollector({
             replaceReved:true
         }))
+        .pipe(rev())
         .pipe(gulp.dest('../Home/Tpl/generating/comold/'));
 });
 gulp.task('special',function(){
@@ -13,6 +15,7 @@ gulp.task('special',function(){
         .pipe(revCollector({
             replaceReved:true
         }))
+        .pipe(rev())
         .pipe(gulp.dest('../Home/Tpl/generating/special/'));
 });
 gulp.task('public',function(){
@@ -20,6 +23,7 @@ gulp.task('public',function(){
         .pipe(revCollector({
             replaceReved:true
         }))
+        .pipe(rev())
         .pipe(gulp.dest('../Home/Tpl/generating/Public/'))
 
 });
