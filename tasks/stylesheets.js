@@ -32,8 +32,31 @@ gulp.task('revCss',function(){
         .pipe(rev.manifest())
         .pipe(gulp.dest('generating/rev/css'));
 });
+//css special file
+gulp.task('tscssmin',function(){
+    console.log('\n\n\ninput command with params, for example: \n\ntscssmin\n\n\n');
+   var tsFileAttay = ['generating/rev/**/*.json'];
+    tsFileAttay.push('css/**/browse.css');
+    tsFileAttay.push('css/**/browsezTree.css');
+    tsFileAttay.push('css/**/customer.css');
+    tsFileAttay.push('css/**/gambit.css');
+    tsFileAttay.push('css/**/headFoot.css');
+    tsFileAttay.push('css/**/index.css');
+    tsFileAttay.push('css/**/monitoring.css');
+    tsFileAttay.push('css/**/myconcern.css');
+    tsFileAttay.push('css/**/newhelp.css');
+    tsFileAttay.push('css/**/stylesheets.css');
+    tsFileAttay.push('css/**/pagepublic.css');
+    tsFileAttay.push('css/**/specialtreecss.css');
+    tsFileAttay.push('css/**/set.css');
+    tsFileAttay.push('css/**/headDefined.css');
+    tsFileAttay.push('css/**/system.css');
+    gulp.src(tsFileAttay)
+        .pipe(minifycss())
+        .pipe(gulp.dest('generating/css'))
+});
 //css update images
-gulp.task('revCssimg',function(){
+gulp.task('revCssimg',['tscssmin'],function(){
     console.log('\n\n\ninput command with params, for example: \n\nrevCssimg\n\n\n');
     var csssrc = ['generating/rev/**/*.json','css/**/*.css'];
     csssrc.push('!css/**/browse.css');
@@ -48,6 +71,9 @@ gulp.task('revCssimg',function(){
     csssrc.push('!css/**/stylesheets.css');
     csssrc.push('!css/**/set.css');
     csssrc.push('!css/**/system.css');
+    csssrc.push('!css/**/pagepublic.css');
+    csssrc.push('!css/**/headDefined.css');
+    csssrc.push('!css/**/specialtreecss.css');
     gulp.src(csssrc)
         .pipe(revCollector({
             replaceReved:true

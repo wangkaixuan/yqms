@@ -13,7 +13,7 @@ gulp.task('rev', ['revimg','revJsm','imagesmin'],function(cb){
     setTimeout(function(){
         console.log('\n\n\ncarry out: \n\nrevCssimg\n\n\n');
         gulpSequence('revCssimg')(cb);
-    },3000);
+    },5000);
   console.log('\n\n\ninput command with params, for example: \n\nrev build\n\n\n');
 });
 //clean
